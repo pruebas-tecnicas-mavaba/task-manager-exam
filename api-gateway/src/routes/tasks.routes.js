@@ -33,9 +33,10 @@ router.post(
 );
 
 router.patch(
-  '/:id/complete',
+  '/:id',
   asyncHandler(async (req, res) => {
     const { id } = req.params;
+    const { completed } = req.body;
 
     if (!id) {
       const error = new Error('Task id is required');
@@ -43,7 +44,15 @@ router.patch(
       throw error;
     }
 
-    const response = await taskServiceClient.patch(`/tasks/${id}/complete`);
+    if (typeof completed !== 'boolean') {
+      const error = new Error('completed (boolean) is required in request body');
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const response = await taskServiceClient.patch(`/tasks/${id}`, {
+      completed
+    });
     res.status(200).json(response.data);
   })
 );

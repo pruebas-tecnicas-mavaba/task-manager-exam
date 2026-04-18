@@ -73,7 +73,7 @@ func (r *TaskRepository) Create(ctx context.Context, title, description string) 
 	return task, nil
 }
 
-func (r *TaskRepository) MarkCompleted(ctx context.Context, id string) (*model.Task, error) {
+func (r *TaskRepository) UpdateTask(ctx context.Context, id string, completed bool) (*model.Task, error) {
 	docRef := r.client.Collection(r.collection).Doc(id)
 
 	doc, err := docRef.Get(ctx)
@@ -86,7 +86,7 @@ func (r *TaskRepository) MarkCompleted(ctx context.Context, id string) (*model.T
 	}
 
 	_, err = docRef.Update(ctx, []firestore.Update{
-		{Path: "completed", Value: true},
+		{Path: "completed", Value: completed},
 	})
 	if err != nil {
 		return nil, err

@@ -32,13 +32,13 @@ func (s *TaskService) CreateTask(ctx context.Context, title, description string)
 	return s.repo.Create(ctx, title, description)
 }
 
-func (s *TaskService) CompleteTask(ctx context.Context, id string) (*model.Task, error) {
+func (s *TaskService) UpdateTask(ctx context.Context, id string, completed bool) (*model.Task, error) {
 	id = strings.TrimSpace(id)
 	if id == "" {
 		return nil, errors.New("task id is required")
 	}
 
-	return s.repo.MarkCompleted(ctx, id)
+	return s.repo.UpdateTask(ctx, id, completed)
 }
 
 func (s *TaskService) DeleteTask(ctx context.Context, id string) error {

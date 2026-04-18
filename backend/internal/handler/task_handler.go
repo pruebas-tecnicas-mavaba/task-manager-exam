@@ -15,6 +15,10 @@ type CreateTaskRequest struct {
 	Description string `json:"description"`
 }
 
+type UpdateTaskRequest struct {
+	Completed *bool `json:"completed"`
+}
+
 func NewTaskHandler(service *service.TaskService) *TaskHandler {
 	return &TaskHandler{service: service}
 }
@@ -23,7 +27,7 @@ func (h *TaskHandler) RegisterRoutes(router *gin.Engine) {
 	router.GET("/health", h.Health)
 	router.GET("/tasks", h.GetTasks)
 	router.POST("/tasks", h.CreateTask)
-	router.PATCH("/tasks/:id/complete", h.CompleteTask)
+	router.PATCH("/tasks/:id", h.UpdateTask)
 	router.DELETE("/tasks/:id", h.DeleteTask)
 }
 
@@ -66,10 +70,18 @@ func (h *TaskHandler) CreateTask(c *gin.Context) {
 	c.JSON(http.StatusCreated, task)
 }
 
-func (h *TaskHandler) CompleteTask(c *gin.Context) {
+func (h *TaskHandler) UpdateTask(c *gin.Context) {
 	id := c.Param("id")
 
-	task, err := h.service.CompleteTask(c.Request.Context(), id)
+	var req UpdateTaskRequest
+	if err := c.ShouldBindJSON(&req); err != nil || req.Completed == nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"message": "invalid request body: completed (boolean) is required",
+		})
+		return
+	}
+
+	task, err := h.service.UpdateTask(c.Request.Context(), id, *req.Completed)
 	if err != nil {
 		status := http.StatusBadRequest
 		if err.Error() == "task not found" {

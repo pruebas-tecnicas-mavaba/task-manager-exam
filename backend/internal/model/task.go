@@ -8,5 +8,5 @@ type Task struct {
 	Title string `json:"title" firestore:"title"`
 	Description string `json:"description" firestore:"description"`
 	Completed bool `json:"completed" firestore:"completed"`
-	CreatedAt time.Time `json:"created_at" firestore:"created_at"`
+	CreatedAt time.Time `json:"created_at" firestore:"createdAt"`
 }

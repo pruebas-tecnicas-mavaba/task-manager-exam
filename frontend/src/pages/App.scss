@@ -1,0 +1,74 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  min-width: min(100%, 360px);
+  margin: 0 auto;
+  height: 100%;
+  min-height: 100dvh;
+  box-sizing: border-box;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__item-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    flex: 1 1 auto;
+    overflow: auto;
+  }
+
+  &__item-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    &[data-completed="true"] {
+      text-decoration: line-through;
+      color: #666;
+    }
+  }
+
+  &__item-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__item-description {
+    font-size: .75rem;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    flex-shrink: 0;
+  }
+
+  &__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 auto;
+  }
+}
