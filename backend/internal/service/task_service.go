@@ -5,8 +5,8 @@ import (
 	"errors"
 	"strings"
 
-	"task-service/internal/model"
-	"task-service/internal/repository"
+	"backend/internal/model"
+	"backend/internal/repository"
 )
 
 type TaskService struct {

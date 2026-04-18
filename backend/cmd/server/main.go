@@ -7,10 +7,10 @@ import (
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
 
-	"task-service/internal/config"
-	"task-service/internal/handler"
-	"task-service/internal/repository"
-	"task-service/internal/service"
+	"backend/internal/config"
+	"backend/internal/handler"
+	"backend/internal/repository"
+	"backend/internal/service"
 )
 
 func main() {
@@ -36,3 +36,4 @@ func main() {
 		log.Fatalf("failed to start server: %v", err)
 	}
 }
+

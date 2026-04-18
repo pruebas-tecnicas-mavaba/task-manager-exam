@@ -8,7 +8,7 @@ import (
 	"cloud.google.com/go/firestore"
 	"google.golang.org/api/iterator"
 
-	"task-service/internal/model"
+	"backend/internal/model"
 )
 
 type TaskRepository struct {
