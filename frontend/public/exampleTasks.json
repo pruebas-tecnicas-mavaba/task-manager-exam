@@ -1,0 +1,39 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Preparar la comida",
+      "description": "Preparar la comida para el almuerzo",
+      "completed": true,
+      "createdAt": "2026-04-18T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Lavar los platos",
+      "description": "Lavar los platos después de la comida",
+      "completed": false,
+      "createdAt": "2026-04-18T10:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Sacar la basura",
+      "description": "Sacar la basura de la casa",
+      "completed": false,
+      "createdAt": "2026-04-18T10:30:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Hacer la cama",
+      "description": "Hacer la cama antes de ir a dormir",
+      "completed": false,
+      "createdAt": "2026-04-18T10:30:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Leer un libro",
+      "description": "Leer 10 minutos antes de dormir",
+      "completed": true,
+      "createdAt": "2026-04-18T10:30:00Z"
+    }
+  ]
+}
