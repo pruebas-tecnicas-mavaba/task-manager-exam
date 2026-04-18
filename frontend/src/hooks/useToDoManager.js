@@ -17,7 +17,6 @@ export const useToDoManager = () => {
     setIsModalCreateTaskOpen(false);
   };
 
-  // 🔹 GET TASKS
   const fetchTasks = useCallback(async () => {
     try {
       setLoading(true);
@@ -43,7 +42,6 @@ export const useToDoManager = () => {
     fetchTasks();
   }, [fetchTasks]);
 
-  // 🔹 UPDATE TASK (completed desde el body)
   const handleTaskCompletion = async (id, completed) => {
     try {
       setLoading(true);
@@ -69,7 +67,6 @@ export const useToDoManager = () => {
     }
   };
 
-  // 🔹 DELETE TASK
   const deleteTask = async (id) => {
     try {
       setLoading(true);
@@ -84,7 +81,6 @@ export const useToDoManager = () => {
         throw new Error('Failed to delete task');
       }
 
-      // 👉 refrescar lista
       await fetchTasks();
 
     } catch (err) {
@@ -95,7 +91,6 @@ export const useToDoManager = () => {
     }
   };
 
-  // 🔹 CREATE TASK
   const createTask = async (title, description) => {
     try {
       setIsLoadingCreateTask(true);
