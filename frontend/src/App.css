@@ -4,23 +4,6 @@
   gap: 10px;
   padding: 20px;
   border: 1px solid black;
-
-  /* &__item-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid black;
-  }
-
-  &__item-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  &__item-description {
-    font-size: 1rem;
-  } */
 }
 
 .task-list__item-wrapper {
@@ -29,6 +12,8 @@
   gap: 10px;
   padding: 10px;
   border: 1px solid black;
+  flex: 1 1 auto;
+  overflow: auto;
 }
 
 .task-list__item-title {
@@ -39,4 +24,12 @@
 .task-list__item-description {
   font-size: 1rem;
 
+}
+
+.task-list__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  flex: 1 1 auto;
 }

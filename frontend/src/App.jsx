@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
+import { Button } from '@mantine/core';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -19,7 +20,10 @@ function App() {
 
   return (
     <>
-      <h1>Task Manager</h1>
+      <div className="task-list__header">
+        <h1>Task Manager</h1>
+        <Button variant="outline" color="blue" className="task-list__item-button">Add Task</Button>
+      </div>
       <div className="task-list">
         {tasks.map((task) => (
           <div className="task-list__item-wrapper" key={task.id}>
@@ -28,7 +32,7 @@ function App() {
               <h3 className="task-list__item-title">{task.title}</h3>
               <p className="task-list__item-description">{task.description} - {task.createdAt}</p>
             </div>
-            <button className="task-list__item-button">Delete</button>
+            <Button variant="outline" color="red" className="task-list__item-button">Delete</Button>
           </div>
         ))}
       </div>
